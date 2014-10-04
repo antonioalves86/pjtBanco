@@ -1,14 +1,15 @@
+/**
+* Classe responsï¿½vel por moldar as Contas do Banco
+*
+* @author Antonio S. Alves
+* Atualizado em 04/10/2114 - 10:10hs
+*/
+
 package br.com.bancobrazil.banco.conta;
 
 import br.com.bancobrazil.banco.sistema.ValorInvalidoException;
-
 import br.com.bancobrazil.banco.usuarios.Cliente;
 
-/**
-* Classe responsável por moldar as Contas do Banco
-*
-* @author Antonio S. Alves
-*/
 public class Conta {
 
 	private Cliente titular; 	// ??? como referencia uma conta a um cliente (private)
@@ -96,7 +97,7 @@ public class Conta {
 	/** Realiza um Saque **/
 	public boolean saca(double valor) {
 		
-		//posso sacar até saldo+limite
+		//posso sacar atï¿½ saldo+limite
 		if (this.saquesDoDia > 3) { 
 			System.out.println("Numero de saques ultrapassou o limite!");
 			//throw new IllegalArgumentException("estourou limite!");
@@ -114,11 +115,11 @@ public class Conta {
 	}
 	
 	/*
-	/** Faz um Depósito **
+	/** Faz um Depï¿½sito **
 	public void deposita(double valor) {
 		
 		if (valor < 0 ) {
-			throw new IllegalArgumentException("Você tentou depositar um valor inválido");
+			throw new IllegalArgumentException("Vocï¿½ tentou depositar um valor invï¿½lido");
 		} else {
 			this.saldo += valor;
 		}
@@ -126,11 +127,11 @@ public class Conta {
 	*/
 	
 	
-	/** Faz um Depósito **/
+	/** Faz um Depï¿½sito **/
 	public void deposita(double valor) {
 		
 		if (valor <= 0 ) {
-			throw new ValorInvalidoException("Valor inválido: R$ " + valor);
+			throw new ValorInvalidoException("Valor invï¿½lido: R$ " + valor);
 		} else {
 			this.saldo += valor;
 		}
@@ -142,12 +143,12 @@ public class Conta {
 		
 		boolean retirou = this.saca(valor); //Realiza o Saque da conta e..		//igual a: if ( this.saca(valor) )
 		if (retirou == false) {
-			// não deu pra sacar!
+			// nï¿½o deu pra sacar!
 			System.out.println("Transferencia Nao Permitida - Saldo Insuficiente!!");
 			return false;
 		} else {
 			this.saquesDoDia--;
-			destino.deposita(valor);		//..Faz o Depósito na Conta de Destino
+			destino.deposita(valor);		//..Faz o Depï¿½sito na Conta de Destino
 			return true;
 		}
 	}	
